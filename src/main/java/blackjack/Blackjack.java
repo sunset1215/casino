@@ -16,8 +16,10 @@ public class Blackjack {
     public Result play() {
         int playerScore = playerHand.score();
         int dealerScore = dealerHand.score();
-        
-        if (playerScore > 21) {
+    
+        if (dealerScore > 21 && playerScore > 21) {
+            return Result.KEEP;
+        } else if (playerScore > 21) {
             return Result.LOSE;
         } else if (dealerScore > 21) {
             return Result.WIN;
@@ -35,6 +37,7 @@ public class Blackjack {
     public enum Result {
         WIN,
         LOSE,
+        KEEP,
         PUSH
     }
 }
