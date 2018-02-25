@@ -1,42 +1,44 @@
 package blackjack;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class DeckTest {
     
+    private Deck deck1;
+    private Deck deck2;
+    
+    @Before
+    public void setUp() {
+        deck1 = new Deck();
+        deck2 = new Deck();
+    }
+    
     @Test
     public void testNewDeckSizeIs52() {
-        Deck deck = new Deck();
-        Assert.assertEquals(52, deck.size());
+        Assert.assertEquals(52, deck1.size());
     }
     
     @Test
     public void testDeckDealDecrementCardCount() {
-        Deck deck = new Deck();
-        deck.deal();
-        Assert.assertEquals(51, deck.size());
+        deck1.deal();
+        Assert.assertEquals(51, deck1.size());
     }
     
     @Test
     public void testDeckOrderAfterShuffleNotSame() {
-        Deck deck1 = new Deck();
-        Deck deck2 = new Deck();
         deck2.shuffle();
         Assert.assertFalse(deck1.hasSameOrder(deck2));
     }
     
     @Test
     public void testNewDecksOrderAreSame() {
-        Deck deck1 = new Deck();
-        Deck deck2 = new Deck();
         Assert.assertTrue(deck1.hasSameOrder(deck2));
     }
     
     @Test
     public void testNewDecksAreDifferent() {
-        Deck deck1 = new Deck();
-        Deck deck2 = new Deck();
         Assert.assertNotEquals(deck1, deck2);
     }
     
