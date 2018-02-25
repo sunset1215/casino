@@ -1,5 +1,7 @@
 package blackjack;
 
+import enums.Result;
+
 public class Blackjack {
     
     private Hand playerHand;
@@ -23,7 +25,7 @@ public class Blackjack {
         int dealerScore = evaluator.computeScore(dealerHand);
 
         if (dealerScore > 21 && playerScore > 21) {
-            return Result.KEEP;
+            return Result.PUSH;
         } else if (playerScore > 21) {
             return Result.LOSE;
         } else if (dealerScore > 21) {
@@ -39,10 +41,4 @@ public class Blackjack {
         }
     }
     
-    public enum Result {
-        WIN,
-        LOSE,
-        KEEP,
-        PUSH
-    }
 }
