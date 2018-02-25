@@ -11,4 +11,11 @@ public class DeckTest {
         Assert.assertTrue(deck.size() == 52);
     }
     
+    @Test
+    public void testDeckDealDecrementCardCount() {
+        Deck deck = new Deck();
+        deck.deal();
+        Assert.assertTrue(deck.size() == 51);
+    }
+    
 }
