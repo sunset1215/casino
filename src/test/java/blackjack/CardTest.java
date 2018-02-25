@@ -28,4 +28,11 @@ public class CardTest {
         Assert.assertNotEquals(c1, c2);
     }
     
+    @Test
+    public void testCardWithSameSuitAndRankHaveSameHashCode() {
+        Card c1 = new Card(Suit.DIAMONDS, Rank.ACE);
+        Card c2 = new Card(Suit.DIAMONDS, Rank.ACE);
+        Assert.assertEquals(c1.hashCode(), c2.hashCode());
+    }
+    
 }
