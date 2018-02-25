@@ -11,6 +11,10 @@ public class Hand {
         cards = new ArrayList<>(13);
     }
     
+    public List<Card> getCards() {
+        return cards;
+    }
+    
     public void draw(Card card) {
         cards.add(card);
     }
