@@ -26,11 +26,4 @@ public class DeckTest {
         Assert.assertNotEquals(deck1, deck2);
     }
     
-    @Test
-    public void testNewDecksAreEqual() {
-        Deck deck1 = new Deck();
-        Deck deck2 = new Deck();
-        Assert.assertNotEquals(deck1, deck2);
-    }
-    
 }
