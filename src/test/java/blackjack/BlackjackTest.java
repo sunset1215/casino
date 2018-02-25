@@ -23,15 +23,15 @@ public class BlackjackTest {
     }
     
     @Test
-    public void testPlayerBlackjackAndWin() {
+    public void testPlayerBlackjackAndBlackjackWin() {
         expectPlayerAndDealerScore(21, 18);
-        replayAssertAndVerify("Player wins", Result.WIN);
+        replayAssertAndVerify("Player wins", Result.BLACKJACK_WIN);
     }
     
     @Test
-    public void testDealerBlackjackAndLose() {
+    public void testDealerBlackjackAndBlackjackLose() {
         expectPlayerAndDealerScore(18, 21);
-        replayAssertAndVerify("Player loses", Result.LOSE);
+        replayAssertAndVerify("Player loses", Result.BLACKJACK_LOSE);
     }
 
     @Test
@@ -43,19 +43,36 @@ public class BlackjackTest {
     @Test
     public void testPlayerBustAndLose() {
         expectPlayerAndDealerScore(22, 18);
+        expectPlayerAndDealerScore(22, 18);
         replayAssertAndVerify("Player bust and lose", Result.LOSE);
     }
 
     @Test
     public void testDealerBustAndWin() {
         expectPlayerAndDealerScore(18, 22);
+        expectPlayerAndDealerScore(18, 22);
         replayAssertAndVerify("Dealer bust and player win", Result.WIN);
     }
 
     @Test
-    public void testBothBustAndKeep() {
+    public void testBothBustAndPush() {
+        expectPlayerAndDealerScore(22, 22);
         expectPlayerAndDealerScore(22, 22);
         replayAssertAndVerify("Both bust and player push", Result.PUSH);
+    }
+    
+    @Test
+    public void testPlayerHigherScoreAndWin() {
+        expectPlayerAndDealerScore(20, 19);
+        expectPlayerAndDealerScore(20, 19);
+        replayAssertAndVerify("Player wins", Result.WIN);
+    }
+    
+    @Test
+    public void testDealerHigherScoreAndLose() {
+        expectPlayerAndDealerScore(19, 20);
+        expectPlayerAndDealerScore(19, 20);
+        replayAssertAndVerify("Player wins", Result.LOSE);
     }
     
     private void expectPlayerAndDealerScore(int playerScore, int dealerScore) {
