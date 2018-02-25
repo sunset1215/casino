@@ -1,8 +1,24 @@
 package blackjack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Deck {
     
+    private List<Integer> cards;
+    
+    public Deck() {
+        cards = new ArrayList<>();
+        for (int i = 0; i < 52; i++) {
+            cards.add(i);
+        }
+    }
+    
     public int size() {
-        return 52;
+        return cards.size();
+    }
+    
+    public Integer deal() {
+        return cards.remove(0);
     }
 }
