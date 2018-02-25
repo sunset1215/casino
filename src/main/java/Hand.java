@@ -14,4 +14,8 @@ public class Hand {
     public int score() {
         return cards.stream().reduce(Integer::sum).get();
     }
+    
+    public void draw(int card) {
+        cards.add(card);
+    }
 }

@@ -12,6 +12,10 @@ public class Blackjack {
     }
     
     public Result play() {
+        if (playerHand.score() > 21) {
+            return Result.LOSE;
+        }
+        
         if (playerHand.score() > dealerHand.score()) {
             return Result.WIN;
         } else if (playerHand.score() < dealerHand.score()) {
