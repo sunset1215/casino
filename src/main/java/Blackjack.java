@@ -12,7 +12,12 @@ public class Blackjack {
     }
     
     public Result play() {
-        return Result.WIN;
+        if (playerHand.score() > dealerHand.score()) {
+            return Result.WIN;
+        } else {
+            return Result.LOSE;
+        }
+        
     }
     
     public enum Result {

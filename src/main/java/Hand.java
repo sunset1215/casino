@@ -10,4 +10,8 @@ public class Hand {
         cards.add(c1);
         cards.add(c2);
     }
+    
+    public int score() {
+        return cards.stream().reduce(Integer::sum).get();
+    }
 }
