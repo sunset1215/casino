@@ -18,4 +18,12 @@ public class DeckTest {
         Assert.assertTrue(deck.size() == 51);
     }
     
+    @Test
+    public void testShuffle() {
+        Deck deck1 = new Deck();
+        Deck deck2 = new Deck();
+        deck2.shuffle();
+        Assert.assertNotEquals(deck1, deck2);
+    }
+    
 }
