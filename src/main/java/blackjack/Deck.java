@@ -26,4 +26,8 @@ public class Deck {
     public void shuffle() {
         Collections.shuffle(cards);
     }
+    
+    public boolean hasSameOrder(Deck d) {
+        return cards.equals(d.cards);
+    }
 }
