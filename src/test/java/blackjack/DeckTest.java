@@ -19,11 +19,11 @@ public class DeckTest {
     }
     
     @Test
-    public void testShuffle() {
+    public void testDeckOrderAfterShuffleNotSame() {
         Deck deck1 = new Deck();
         Deck deck2 = new Deck();
         deck2.shuffle();
-        Assert.assertNotEquals(deck1, deck2);
+        Assert.assertFalse(deck1.hasSameOrder(deck2));
     }
     
 }
