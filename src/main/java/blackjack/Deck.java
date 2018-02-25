@@ -12,7 +12,7 @@ public class Deck {
     private List<Card> cards;
     
     public Deck() {
-        cards = new ArrayList<>();
+        cards = new ArrayList<>(52);
         for (Suit suit : Suit.values()) {
             for (Rank rank : Rank.values()) {
                 cards.add(new Card(suit, rank));

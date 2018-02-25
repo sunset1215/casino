@@ -8,7 +8,7 @@ public class Hand {
     private List<Integer> cards;
     
     public Hand(int c1, int c2) {
-        cards = new ArrayList<>();
+        cards = new ArrayList<>(5);
         cards.add(c1);
         cards.add(c2);
     }
