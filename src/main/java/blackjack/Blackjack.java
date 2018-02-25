@@ -19,6 +19,8 @@ public class Blackjack {
         
         if (playerScore > 21) {
             return Result.LOSE;
+        } else if (dealerScore > 21) {
+            return Result.WIN;
         }
         
         if (playerScore > dealerScore) {
