@@ -75,6 +75,13 @@ public class BlackjackTest {
         replayAssertAndVerify("Player wins", Result.LOSE);
     }
     
+    @Test
+    public void testSameScoreAndPush() {
+        expectPlayerAndDealerScore(20, 20);
+        expectPlayerAndDealerScore(20, 20);
+        replayAssertAndVerify("Player push", Result.PUSH);
+    }
+    
     private void expectPlayerAndDealerScore(int playerScore, int dealerScore) {
         EasyMock.expect(evaluator.computeScore(handMock)).andReturn(playerScore);
         EasyMock.expect(evaluator.computeScore(handMock)).andReturn(dealerScore);
