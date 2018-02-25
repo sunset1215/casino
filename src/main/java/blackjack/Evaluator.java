@@ -34,12 +34,15 @@ public class Evaluator {
     public int computeScore(Hand hand) {
         int score = 0;
         for (Card card : hand.getCards()) {
-            score += getCardValue(card);
+            score += getCardValue(card, hand.size());
         }
         return score;
     }
     
-    private int getCardValue(Card card) {
+    private int getCardValue(Card card, int handSize) {
+        if (card.isAce() && handSize > 2) {
+            return 1;
+        }
         return rankValueMap.get(card.getRank());
     }
 }

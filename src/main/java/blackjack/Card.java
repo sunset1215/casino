@@ -37,4 +37,8 @@ public class Card {
     public int hashCode() {
         return Objects.hash(suit, rank);
     }
+    
+    public boolean isAce() {
+        return rank.equals(Rank.ACE);
+    }
 }
