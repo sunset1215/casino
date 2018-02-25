@@ -12,6 +12,16 @@ public class BlackjackTest {
         game.setDealerHand(dealerHand);
         Assert.assertEquals("Player wins", Blackjack.Result.WIN, game.play());
     }
+    
+    @Test
+    public void testDealerBlackjackPlayerLose() {
+        Blackjack game = new Blackjack();
+        Hand playerHand = new Hand(10, 9);
+        Hand dealerHand = new Hand(10, 11);
+        game.setPlayerHand(playerHand);
+        game.setDealerHand(dealerHand);
+        Assert.assertEquals("Player loses", Blackjack.Result.LOSE, game.play());
+    }
 
 
 }
