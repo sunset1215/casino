@@ -5,7 +5,7 @@ public class BlackjackTest {
     
     @Test
     public void testPlayerBlackjackWin() {
-        BlackJack game = new BlackJack();
+        Blackjack game = new Blackjack();
         Hand playerHand = new Hand(10, 11);
         Hand dealerHand = new Hand(10, 9);
         game.setPlayerHand(playerHand);
