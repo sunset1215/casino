@@ -1,5 +1,6 @@
 package blackjack;
 
+import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,19 +8,28 @@ import org.junit.Test;
 public class BlackjackTest {
     
     private Blackjack game;
+    private Hand handMock;
+    private Evaluator evaluator;
     
     @Before
     public void setUp() {
         game = new Blackjack();
+        evaluator = EasyMock.createStrictMock(Evaluator.class);
+        handMock = EasyMock.createNiceMock(Hand.class);
+        game.setEvaluator(evaluator);
+        game.setPlayerHand(handMock);
+        game.setDealerHand(handMock);
     }
     
-//    @Test
-//    public void testPlayerBlackjackAndWin() {
-//        game.setPlayerHand(createBlackjackHand());
-//        game.setDealerHand(new Hand(10, 9));
-//        Assert.assertEquals("Player wins", Blackjack.Result.WIN, game.play());
-//    }
-//
+    @Test
+    public void testPlayerBlackjackAndWin() {
+        expectPlayerScore(21);
+        expectDealerScore(18);
+        EasyMock.replay(evaluator);
+        Assert.assertEquals("Player wins", Blackjack.Result.WIN, game.play());
+        EasyMock.verify(evaluator);
+    }
+
 //    @Test
 //    public void testDealerBlackjackAndLose() {
 //        game.setPlayerHand(new Hand(10, 9));
@@ -66,5 +76,14 @@ public class BlackjackTest {
 //    private Hand createBlackjackHand() {
 //        return new Hand(10, 11);
 //    }
+    
+    
+    private void expectPlayerScore(int score) {
+        EasyMock.expect(evaluator.computeScore(handMock)).andReturn(score);
+    }
+    
+    private void expectDealerScore(int score) {
+        EasyMock.expect(evaluator.computeScore(handMock)).andReturn(score);
+    }
 
 }
