@@ -1,3 +1,5 @@
+package blackjack;
+
 public class Blackjack {
     
     private Hand playerHand;
@@ -12,13 +14,16 @@ public class Blackjack {
     }
     
     public Result play() {
-        if (playerHand.score() > 21) {
+        int playerScore = playerHand.score();
+        int dealerScore = dealerHand.score();
+        
+        if (playerScore > 21) {
             return Result.LOSE;
         }
         
-        if (playerHand.score() > dealerHand.score()) {
+        if (playerScore > dealerScore) {
             return Result.WIN;
-        } else if (playerHand.score() < dealerHand.score()) {
+        } else if (playerScore < dealerScore) {
             return Result.LOSE;
         } else {
             return Result.PUSH;

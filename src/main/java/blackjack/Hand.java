@@ -1,9 +1,11 @@
+package blackjack;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
     
-    List<Integer> cards;
+    private List<Integer> cards;
     
     public Hand(int c1, int c2) {
         cards = new ArrayList<>();

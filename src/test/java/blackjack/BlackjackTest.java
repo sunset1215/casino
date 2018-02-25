@@ -1,10 +1,12 @@
+package blackjack;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class BlackjackTest {
     
-    Blackjack game;
+    private Blackjack game;
     
     @Before
     public void setUp() {
@@ -13,7 +15,7 @@ public class BlackjackTest {
     
     @Test
     public void testPlayerBlackjackAndWin() {
-        game.setPlayerHand(new Hand(10, 11));
+        game.setPlayerHand(createBlackjackHand());
         game.setDealerHand(new Hand(10, 9));
         Assert.assertEquals("Player wins", Blackjack.Result.WIN, game.play());
     }
@@ -21,14 +23,14 @@ public class BlackjackTest {
     @Test
     public void testDealerBlackjackAndLose() {
         game.setPlayerHand(new Hand(10, 9));
-        game.setDealerHand(new Hand(10, 11));
+        game.setDealerHand(createBlackjackHand());
         Assert.assertEquals("Player loses", Blackjack.Result.LOSE, game.play());
     }
     
     @Test
     public void testBothBlackjackAndPush() {
-        game.setPlayerHand(new Hand(10, 11));
-        game.setDealerHand(new Hand(10, 11));
+        game.setPlayerHand(createBlackjackHand());
+        game.setDealerHand(createBlackjackHand());
         Assert.assertEquals("Player pushes", Blackjack.Result.PUSH, game.play());
     }
     
@@ -37,8 +39,12 @@ public class BlackjackTest {
         Hand playerHand = new Hand(10, 2);
         playerHand.draw(10);
         game.setPlayerHand(playerHand);
-        game.setDealerHand(new Hand(10, 11));
+        game.setDealerHand(createBlackjackHand());
         Assert.assertEquals("Player exceed and lose", Blackjack.Result.LOSE, game.play());
+    }
+    
+    private Hand createBlackjackHand() {
+        return new Hand(10, 11);
     }
 
 }
