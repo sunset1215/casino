@@ -5,23 +5,17 @@ import java.util.List;
 
 public class Hand {
     
-    private List<Integer> cards;
+    private List<Card> cards;
     
     public Hand() {
         cards = new ArrayList<>(13);
     }
     
-    public Hand(int c1, int c2) {
-        cards = new ArrayList<>(13);
-        cards.add(c1);
-        cards.add(c2);
-    }
-    
-    public int score() {
-        return cards.stream().reduce(Integer::sum).get();
-    }
-    
-    public void draw(int card) {
+    public void draw(Card card) {
         cards.add(card);
+    }
+    
+    public int size() {
+        return cards.size();
     }
 }
