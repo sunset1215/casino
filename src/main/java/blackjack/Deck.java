@@ -1,6 +1,7 @@
 package blackjack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
@@ -20,5 +21,9 @@ public class Deck {
     
     public Integer deal() {
         return cards.remove(0);
+    }
+    
+    public void shuffle() {
+        Collections.shuffle(cards);
     }
 }
