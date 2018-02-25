@@ -43,6 +43,15 @@ public class BlackjackTest {
         Assert.assertEquals("Player exceed and lose", Blackjack.Result.LOSE, game.play());
     }
     
+    @Test
+    public void testDealerExceedAndWin() {
+        Hand dealerHand = new Hand(10, 2);
+        dealerHand.draw(10);
+        game.setPlayerHand(createBlackjackHand());
+        game.setDealerHand(dealerHand);
+        Assert.assertEquals("Dealer exceed and player win", Blackjack.Result.WIN, game.play());
+    }
+    
     private Hand createBlackjackHand() {
         return new Hand(10, 11);
     }
