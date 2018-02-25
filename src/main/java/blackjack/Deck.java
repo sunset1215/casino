@@ -1,17 +1,22 @@
 package blackjack;
 
+import enums.Rank;
+import enums.Suit;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Deck {
     
-    private List<Integer> cards;
+    private List<Card> cards;
     
     public Deck() {
         cards = new ArrayList<>();
-        for (int i = 0; i < 52; i++) {
-            cards.add(i);
+        for (Suit suit : Suit.values()) {
+            for (Rank rank : Rank.values()) {
+                cards.add(new Card(suit, rank));
+            }
         }
     }
     
@@ -19,7 +24,7 @@ public class Deck {
         return cards.size();
     }
     
-    public Integer deal() {
+    public Card deal() {
         return cards.remove(0);
     }
     
