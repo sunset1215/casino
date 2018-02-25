@@ -7,8 +7,12 @@ public class Hand {
     
     private List<Integer> cards;
     
+    public Hand() {
+        cards = new ArrayList<>(13);
+    }
+    
     public Hand(int c1, int c2) {
-        cards = new ArrayList<>(5);
+        cards = new ArrayList<>(13);
         cards.add(c1);
         cards.add(c2);
     }
